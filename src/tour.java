@@ -25,7 +25,6 @@ public class tour {
             return;
         }
 
-        // Find the point in tour closest to p
         Node closest = head;
         double minDist = head.p.distanceTo(p);
         Node current = head.next;
@@ -38,7 +37,6 @@ public class tour {
             current = current.next;
         }
 
-        // Insert after closest
         Node newNode = new Node(p);
         newNode.next = closest.next;
         closest.next = newNode;
@@ -53,7 +51,10 @@ public class tour {
             return;
         }
 
-        // Find the insertion that increases length the least
+        insertAtSmallestIncrease(p);
+    }
+
+    private void insertAtSmallestIncrease(Point p) {
         Node bestPrev = null;
         double minIncrease = Double.MAX_VALUE;
 
@@ -68,7 +69,6 @@ public class tour {
             prev = next;
         }
 
-        // Insert after bestPrev
         Node newNode = new Node(p);
         newNode.next = bestPrev.next;
         bestPrev.next = newNode;
